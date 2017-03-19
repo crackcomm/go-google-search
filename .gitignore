@@ -1,0 +1,9 @@
+
+*.dat
+*.txt
+*.exe
+*.jpg
+
+dist/
+
+data/

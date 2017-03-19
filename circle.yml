@@ -1,0 +1,19 @@
+
+machine:
+  environment:
+    GODIST: "go1.8.linux-amd64.tar.gz"
+  post:
+    - test -e $GODIST || curl -o $GODIST https://storage.googleapis.com/golang/$GODIST
+    - sudo rm -rf /usr/local/go
+    - sudo tar -C /usr/local -xzf $GODIST
+  services:
+    - docker
+
+deployment:
+  staging:
+    branch: master
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - make build
+      - docker build -t crackcomm/google-search .
+      - docker push crackcomm/google-search
