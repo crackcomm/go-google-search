@@ -1,5 +1,7 @@
 # go-google-search
 
+[![Circle CI](https://img.shields.io/circleci/project/crackcomm/go-google-search.svg)](https://circleci.com/gh/crackcomm/go-google-search)
+
 Google search crawler with NSQ worker.
 
 ## Usage
