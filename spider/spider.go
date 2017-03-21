@@ -31,6 +31,8 @@ type SearchResult struct {
 	Page int `json:"page,omitempty"`
 	// Results - List of URLs.
 	Results []string `json:"results,omitempty"`
+	// Engine - Result engine, "google".
+	Engine string `json:"engine,omitempty"`
 	// Source - URL source.
 	Source string `json:"source,omitempty"`
 }
@@ -61,6 +63,7 @@ func (spider *Spider) Google(ctx context.Context, resp *crawl.Response) (err err
 		Query:  getQueryValue(uri, "q"),
 		Page:   getPageFromURL(uri),
 		Source: uri,
+		Engine: "google",
 	}
 
 	// Crawl all the results on a page
