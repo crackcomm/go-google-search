@@ -13,7 +13,7 @@ Example usage from command line:
 $ go install github.com/crackcomm/crawl/nsq/crawl-schedule
 # Schedule crawl of google search results
 $ crawl-schedule \
-      --topic google_search \
+      --nsq-topic google_search \
       --callback github.com/crackcomm/go-google-search/spider.Google \
       "https://www.google.com/search?q=Github"
 ```

@@ -11,8 +11,8 @@ COPY ./dist/google /google
 # Environment variables
 # for google search app
 #
-ENV TOPIC google_search
-ENV CHANNEL consumer
+ENV NSQ_TOPIC google_search
+ENV NSQ_CHANNEL consumer
 ENV NSQ_ADDR nsq:4150
 ENV NSQLOOKUP_ADDR nsqlookup:4161
 ENV CONCURRENCY 10
