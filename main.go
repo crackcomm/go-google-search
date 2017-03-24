@@ -7,7 +7,7 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/k0kubun/pp"
-	"github.com/urfave/cli"
+	"gopkg.in/urfave/cli.v2"
 
 	"github.com/crackcomm/crawl"
 	"github.com/crackcomm/crawl/nsq/consumer"
@@ -15,11 +15,11 @@ import (
 )
 
 func init() {
-	consumer.Flags = append(consumer.Flags, cli.StringFlag{
-		Name:   "output-topic",
-		EnvVar: "OUTPUT_TOPIC",
-		Usage:  "search results output nsq topic (required)",
-		Value:  "google_results",
+	consumer.Flags = append(consumer.Flags, &cli.StringFlag{
+		Name:    "output-topic",
+		EnvVars: []string{"OUTPUT_TOPIC"},
+		Usage:   "search results output nsq topic (required)",
+		Value:   "google_results",
 	})
 }
 
@@ -61,7 +61,7 @@ func main() {
 	// Command line usage
 	app.Name = "google"
 	app.Usage = "google search crawler"
-	app.Version = "0.0.1"
+	app.Version = "0.0.2"
 
 	if err := app.Run(os.Args); err != nil {
 		glog.Fatal(err)
